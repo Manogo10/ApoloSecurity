@@ -37,9 +37,14 @@ INSTALLED_APPS = [
 'django.contrib.sessions',
 'django.contrib.messages',
 'django.contrib.staticfiles',
-'aplication',]
+'rest_framework',
+'rest_framework.authtoken',
+'rest_auth',
+'aplication',
+'corsheaders',]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -78,10 +83,18 @@ DATABASES = {
 'ENGINE': 'django.db.backends.mysql',
 'NAME': 'apolosecurity',
 'USER': 'root',
-'PASSWORD': '99032a',
+'PASSWORD': 'password',
 'HOST': 'localhost',
 'PORT': '3306',
 }
+}
+REST_FRAMEWORK = {
+'DEFAULT_AUTHENTICATION_CLASSES': (
+'rest_framework.authentication.TokenAuthentication',
+),
+'DEFAULT_PERMISSION_CLASSES': (
+'rest_framework.permissions.IsAuthenticated',
+),
 }
 
 
@@ -102,6 +115,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+CORS_ORIGIN_WHITELIST = (
+'localhost:8000',
+)
+CORS_ALLOW_METHODS = (
+'DELETE',
+'GET',
+'PATCH',
+'POST',
+'PUT',
+)
 
 
 # Internationalization

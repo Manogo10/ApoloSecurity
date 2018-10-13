@@ -1,0 +1,7 @@
+{
+  "name": "apolosecurity",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
